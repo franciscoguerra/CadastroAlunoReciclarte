@@ -1,5 +1,7 @@
 
 using CadastroAlunoReciclarte.Map;
+using CadastroAlunoReciclarte.Repositorios.Interfaces;
+using CadastroAlunoReciclarte.Repositorios;
 using Microsoft.EntityFrameworkCore;
 
 namespace CadastroAlunoReciclarte
@@ -15,10 +17,27 @@ namespace CadastroAlunoReciclarte
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
-            builder.Services.AddDbContext<CadastroAlunoDbContext>(options => options.UseSqlServer(builder
-                .Configuration.GetConnectionString("DataBase"))
-            );
+            builder.Services.AddSwaggerGen( 
+                options => {
+                    options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+                });
+            //builder.Services.AddDbContext<CadastroAlunoDbContext>(options => options.UseSqlServer(builder
+            //    .Configuration.GetConnectionString("DataBase"))
+            //);
+
+            builder.Services
+               .AddDbContext<CadastroAlunoDbContext>(
+                   options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
+               );
+
+            builder.Services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
+            builder.Services.AddScoped<ICursoRepositorio, CursoRepositorio>();
+            builder.Services.AddScoped<IEnderecoRepositorio, EnderecoRepositorio>();
+            builder.Services.AddScoped<IEscolaRepositorio, EscolaRepositorio>();
+            builder.Services.AddScoped<IFiliacaoRepositorio, FiliacaoRepositorio>();
+            builder.Services.AddScoped<ITurmaRepositorio, TurmaRepositorio>();
+
+
 
             var app = builder.Build();
 

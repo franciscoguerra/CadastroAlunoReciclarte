@@ -14,7 +14,7 @@ namespace CadastroAlunoReciclarte.Data.Map
             builder.Property(x => x.Sexo).IsRequired();
             builder.Property(x => x.Rg).IsRequired();
             builder.Property(x => x.EmissorRg).IsRequired();
-            builder.Property(x => x.cpf).IsRequired();
+            builder.Property(x => x.Cpf).IsRequired();
             builder.Property(x => x.Nacionalidade).IsRequired();
             builder.Property(x => x.CorRaca).IsRequired();
             builder.Property(x => x.CodigoINEP).IsRequired();
