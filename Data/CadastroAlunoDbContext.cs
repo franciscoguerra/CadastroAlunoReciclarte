@@ -7,6 +7,7 @@ namespace CadastroAlunoReciclarte.Map
 {
     public class CadastroAlunoDbContext : DbContext
     {
+        
         public CadastroAlunoDbContext(DbContextOptions<CadastroAlunoDbContext> options)
             :base(options) 
         { }
@@ -18,11 +19,7 @@ namespace CadastroAlunoReciclarte.Map
         public DbSet<Filiacao> Filiacaos { get; set; }
         public DbSet<Turma> Turmas { get; set; }
 
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.ApplyConfiguration(new AlunoMap());
-        //    base.OnModelCreating(modelBuilder);
-        //}
+      
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

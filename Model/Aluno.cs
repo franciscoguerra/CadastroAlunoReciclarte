@@ -17,7 +17,7 @@ namespace CadastroAlunoReciclarte.Model
 
         [Required(ErrorMessage = "Campo de preenchimento obrigatório")]
         [RegularExpression(@"^[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}$", ErrorMessage = "CPF inválido")]
-        public string? Cpf { get; }
+        public string? Cpf { get; set; }
 
         public string? Nacionalidade { get; set; }
         public string? CorRaca { get; set; }
@@ -57,10 +57,9 @@ namespace CadastroAlunoReciclarte.Model
         public void CpfDuplicidade()
         {
             var cpfDup = Cpf.Distinct();
-
             foreach(var item in cpfDup)
             {
-                if(item == item)
+                if (item == item)
                 {
                     throw new Exception("CPF duplicado!");
                 }

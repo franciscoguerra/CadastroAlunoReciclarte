@@ -6,7 +6,7 @@ namespace CadastroAlunoReciclarte.Repositorios.Interfaces
     {
         Task<Aluno> BuscarAlunoPorId(int id);
         Task<Aluno> BuscarAlunoPorNome(string nome);
-        Task<Aluno> BuscarTodosAlunos();
+        Task<List<Aluno>> BuscarTodosAlunos();
         Task<Aluno> BuscarAlunoCPF(string cpf);
         Task<Aluno> CadastrarAluno(Aluno aluno);
         Task<Aluno> AtualizarAluno(Aluno aluno, int id);

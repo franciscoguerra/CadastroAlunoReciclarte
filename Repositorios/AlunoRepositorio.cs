@@ -14,10 +14,10 @@ namespace CadastroAlunoReciclarte.Repositorios
             _dbContext = cadastroAlunoReciclarteDbContext;
         }
 
-       //public async Task<List<Aluno>> IBuscarTodosAlunos()
-       // {
-       //     return await _dbContext.Alunos.ToListAsync();
-       // }
+        public async Task<List<Aluno>> IBuscarTodosAlunos()
+        {
+            return await _dbContext.Alunos.ToListAsync();
+        }
 
         public async Task<Aluno> BuscarAlunoPorId(int id)
         {
@@ -60,7 +60,7 @@ namespace CadastroAlunoReciclarte.Repositorios
             buscarAlunoPorId.Sexo= aluno.Sexo;
             buscarAlunoPorId.Rg= aluno.Rg;
             buscarAlunoPorId.EmissorRg= aluno.EmissorRg;
-            //buscarAlunoPorId.cpf= aluno.cpf;
+            //buscarAlunoPorId.Cpf = aluno.Cpf;
             buscarAlunoPorId.Nacionalidade=aluno.Nacionalidade;
             buscarAlunoPorId.CorRaca= aluno.CorRaca;
             buscarAlunoPorId.CodigoINEP= aluno.CodigoINEP;
@@ -92,9 +92,9 @@ namespace CadastroAlunoReciclarte.Repositorios
             return true;
         }
 
-        Task<Aluno> IAlunoRepositorio.BuscarTodosAlunos()
-        {
-            throw new NotImplementedException();
-        }
+        //Task<Aluno> IAlunoRepositorio.BuscarTodosAlunos()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

@@ -3,6 +3,8 @@ using CadastroAlunoReciclarte.Map;
 using CadastroAlunoReciclarte.Repositorios.Interfaces;
 using CadastroAlunoReciclarte.Repositorios;
 using Microsoft.EntityFrameworkCore;
+using CadastroAlunoReciclarte.Context;
+using Microsoft.Extensions.Configuration;
 
 namespace CadastroAlunoReciclarte
 {
@@ -12,23 +14,22 @@ namespace CadastroAlunoReciclarte
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen( 
-                options => {
-                    options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
-                });
-            //builder.Services.AddDbContext<CadastroAlunoDbContext>(options => options.UseSqlServer(builder
-            //    .Configuration.GetConnectionString("DataBase"))
-            //);
-
+            builder.Services.AddSwaggerGen(
+            options =>
+            {
+                options.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
+            });
+          
             builder.Services
-               .AddDbContext<CadastroAlunoDbContext>(
+               .AddDbContext<CadastroAlunoReciclarteDbContext>(
                    options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase"))
                );
+       
+
 
             builder.Services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
             builder.Services.AddScoped<ICursoRepositorio, CursoRepositorio>();
