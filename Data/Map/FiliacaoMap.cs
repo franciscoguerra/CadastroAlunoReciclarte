@@ -9,7 +9,7 @@ namespace CadastroAlunoReciclarte.Data.Map
     {
         public void Configure(EntityTypeBuilder<Filiacao> builder)
         {
-            builder.HasKey( x => x.id);
+            builder.HasKey( x => x.Id);
             builder.Property(x => x.NomePai);
             builder.Property(x => x.NomeMae);
             builder.Property(x => x.Cpf);
